@@ -1,0 +1,27 @@
+name: Deploy To Production CI/CD
+
+on:
+  push:
+    branches:
+      - PRODUCTION
+
+jobs:
+  deploy: 
+    runs-on: ubuntu-latest
+    strategy: 
+      fail-fast: false
+      matrix:
+        node-version: [18.0]
+        
+    steps:
+      - name: Deploying to AWS Production Server
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secret.HOST }}
+          username: ${{ secret.USERNAME }}
+          password: ${{ secret.PASSWORD }}
+          script: |
+            cd /home/DoubtConnect_backend
+            git pull 
+            docker compose down && docker compose up -d
+          
