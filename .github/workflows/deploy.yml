@@ -21,7 +21,7 @@ jobs:
           username: ${{ secret.USERNAME }}
           password: ${{ secret.PASSWORD }}
           script: |
-            cd /home/DoubtConnect_backend
+            cd /home/ci-cd-github-action
             git pull 
             docker compose down && docker compose up -d
           
