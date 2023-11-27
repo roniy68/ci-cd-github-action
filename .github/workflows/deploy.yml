@@ -19,7 +19,8 @@ jobs:
         with: 
           host: ${{ secret.HOST }}
           username: ${{ secret.USERNAME }}
-          password: ${{ secret.PASSWORD }}
+          key: ${{ secret.SSH_PRIVATE_KEY }}
+          port: 22
           script: |
             cd /home/ci-cd-github-action
             git pull 
