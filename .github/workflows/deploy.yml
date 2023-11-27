@@ -23,6 +23,8 @@ jobs:
           port: 22
           script: |
             cd /home/ci-cd-github-action
+            git checkout PRODUCTION
             git pull 
-            docker compose down && docker compose up -d
+            node index.js
+            
           
